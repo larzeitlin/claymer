@@ -8,7 +8,8 @@
             [clojure.test.check.generators :as gen]
             [clojure.test.check.properties :as prop]))
 
-;; # Fibonacci Sequence Function and Unit Test
+;; # Fibonacci Sequence Function and Unit Testing
+;; See implementation a
 ;; This namespace contains a function to compute the nth Fibonacci number,
 ;; as well as accompanying unit tests to verify its correctness.
 ;;
