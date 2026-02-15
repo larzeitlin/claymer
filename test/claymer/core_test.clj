@@ -1,18 +1,14 @@
 ^:kindly/hide-code
 (ns claymer.core-test
-  (:require [scicloj.clay.v2.api :as clay]
-            [scicloj.kindly.v4.kind :as kind]
-            [claymer.core :as sut]
-            [clojure.test :as test :refer [is deftest testing]]
-            [clojure.test.check :as tc]
-            [clojure.test.check.generators :as gen]
-            [clojure.test.check.properties :as prop]))
+  (:require
+   [claymer.core :as sut]
+   [clojure.test :as test :refer [deftest is testing]]
+   [clojure.test.check :as tc]
+   [clojure.test.check.generators :as gen]
+   [clojure.test.check.properties :as prop]
+   [scicloj.kindly.v4.kind :as kind]))
 
-;; # Fibonacci Sequence Function and Unit Testing
-;; See implementation a
-;; This namespace contains a function to compute the nth Fibonacci number,
-;; as well as accompanying unit tests to verify its correctness.
-;;
+;; # Fibonacci Sequence Function
 ;; ## Functionality
 ;; - `fib`: Takes a non-negative integer `n` and returns the nth Fibonacci number.
 ;; ### Examples:
