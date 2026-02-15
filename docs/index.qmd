@@ -13,6 +13,21 @@ format:
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script><script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js" type="text/javascript"></script><script src="https://cdn.jsdelivr.net/npm/vega@5.25.0" type="text/javascript"></script><script src="https://cdn.jsdelivr.net/npm/vega-lite@5.16.3" type="text/javascript"></script><script src="https://cdn.jsdelivr.net/npm/vega-embed@6.22.2" type="text/javascript"></script>
 
+::: {.sourceClojure}
+```clojure
+(ns claymer.core-test
+  (:require
+   [claymer.core :as sut]
+   [clojure.test :as test :refer [deftest is testing]]
+   [clojure.test.check :as tc]
+   [clojure.test.check.generators :as gen]
+   [clojure.test.check.properties :as prop]
+   [scicloj.kindly.v4.kind :as kind]))
+```
+:::
+
+
+
 # Fibonacci Sequence Function
 
 ## Functionality
@@ -66,7 +81,12 @@ Negitive numbers are out of bounds.
 ## Properties
 
 ### Parity Invarient
-Every third Fibonacci number is odd.
+Every third Fibonacci number is even.
+This is because an odd + even = odd so we get the cycle:
+```
+0+1=1 -> 1+1=2 -> 1+2=3 -> ...
+E+O=O -> O+O=E -> O+E=O -> ...
+```
 
 
 ::: {.sourceClojure}
@@ -96,8 +116,8 @@ Every third Fibonacci number is odd.
 {:result true,
  :pass? true,
  :num-tests 10000,
- :time-elapsed-ms 46,
- :seed 1771148009474}
+ :time-elapsed-ms 43,
+ :seed 1771150022198}
 
 ```
 :::
@@ -111,7 +131,7 @@ has exponential time complexity, so its execution time grows dramatically.
 
 
 ```{=html}
-<div><script>vegaEmbed(document.currentScript.parentElement, {"$schema":"https:\/\/vega.github.io\/schema\/vega-lite\/v5.json","title":"Fibonacci Performance: Iterative vs Naive Recursive","width":600,"height":400,"data":{"values":[{"n":0,"time-ms":0.006292,"implementation":"fib (iterative)"},{"n":1,"time-ms":5.83E-4,"implementation":"fib (iterative)"},{"n":2,"time-ms":2.91E-4,"implementation":"fib (iterative)"},{"n":3,"time-ms":2.92E-4,"implementation":"fib (iterative)"},{"n":4,"time-ms":3.75E-4,"implementation":"fib (iterative)"},{"n":5,"time-ms":3.75E-4,"implementation":"fib (iterative)"},{"n":6,"time-ms":4.17E-4,"implementation":"fib (iterative)"},{"n":7,"time-ms":5.42E-4,"implementation":"fib (iterative)"},{"n":8,"time-ms":5.84E-4,"implementation":"fib (iterative)"},{"n":9,"time-ms":6.25E-4,"implementation":"fib (iterative)"},{"n":10,"time-ms":6.25E-4,"implementation":"fib (iterative)"},{"n":11,"time-ms":7.08E-4,"implementation":"fib (iterative)"},{"n":12,"time-ms":8.33E-4,"implementation":"fib (iterative)"},{"n":13,"time-ms":8.34E-4,"implementation":"fib (iterative)"},{"n":14,"time-ms":8.75E-4,"implementation":"fib (iterative)"},{"n":15,"time-ms":9.17E-4,"implementation":"fib (iterative)"},{"n":16,"time-ms":0.001042,"implementation":"fib (iterative)"},{"n":17,"time-ms":0.001083,"implementation":"fib (iterative)"},{"n":18,"time-ms":0.001084,"implementation":"fib (iterative)"},{"n":19,"time-ms":0.001167,"implementation":"fib (iterative)"},{"n":20,"time-ms":0.001209,"implementation":"fib (iterative)"},{"n":21,"time-ms":0.001292,"implementation":"fib (iterative)"},{"n":22,"time-ms":0.001334,"implementation":"fib (iterative)"},{"n":23,"time-ms":0.001375,"implementation":"fib (iterative)"},{"n":24,"time-ms":0.001416,"implementation":"fib (iterative)"},{"n":25,"time-ms":0.001458,"implementation":"fib (iterative)"},{"n":26,"time-ms":0.0015,"implementation":"fib (iterative)"},{"n":27,"time-ms":0.001584,"implementation":"fib (iterative)"},{"n":28,"time-ms":0.001667,"implementation":"fib (iterative)"},{"n":29,"time-ms":0.001708,"implementation":"fib (iterative)"},{"n":30,"time-ms":0.00175,"implementation":"fib (iterative)"},{"n":0,"time-ms":0.006,"implementation":"fib-naive (recursive)"},{"n":1,"time-ms":2.08E-4,"implementation":"fib-naive (recursive)"},{"n":2,"time-ms":0.019458,"implementation":"fib-naive (recursive)"},{"n":3,"time-ms":6.25E-4,"implementation":"fib-naive (recursive)"},{"n":4,"time-ms":7.91E-4,"implementation":"fib-naive (recursive)"},{"n":5,"time-ms":0.001291,"implementation":"fib-naive (recursive)"},{"n":6,"time-ms":0.002167,"implementation":"fib-naive (recursive)"},{"n":7,"time-ms":0.0035,"implementation":"fib-naive (recursive)"},{"n":8,"time-ms":0.006,"implementation":"fib-naive (recursive)"},{"n":9,"time-ms":0.010917,"implementation":"fib-naive (recursive)"},{"n":10,"time-ms":0.015167,"implementation":"fib-naive (recursive)"},{"n":11,"time-ms":0.026792,"implementation":"fib-naive (recursive)"},{"n":12,"time-ms":0.038375,"implementation":"fib-naive (recursive)"},{"n":13,"time-ms":0.059834,"implementation":"fib-naive (recursive)"},{"n":14,"time-ms":0.129083,"implementation":"fib-naive (recursive)"},{"n":15,"time-ms":0.0465,"implementation":"fib-naive (recursive)"},{"n":16,"time-ms":0.082792,"implementation":"fib-naive (recursive)"},{"n":17,"time-ms":0.121416,"implementation":"fib-naive (recursive)"},{"n":18,"time-ms":0.197833,"implementation":"fib-naive (recursive)"},{"n":19,"time-ms":0.31475,"implementation":"fib-naive (recursive)"},{"n":20,"time-ms":0.507333,"implementation":"fib-naive (recursive)"},{"n":21,"time-ms":0.834,"implementation":"fib-naive (recursive)"},{"n":22,"time-ms":1.328375,"implementation":"fib-naive (recursive)"},{"n":23,"time-ms":2.121417,"implementation":"fib-naive (recursive)"},{"n":24,"time-ms":2.40225,"implementation":"fib-naive (recursive)"},{"n":25,"time-ms":0.604416,"implementation":"fib-naive (recursive)"},{"n":26,"time-ms":0.995416,"implementation":"fib-naive (recursive)"},{"n":27,"time-ms":1.572958,"implementation":"fib-naive (recursive)"},{"n":28,"time-ms":2.545,"implementation":"fib-naive (recursive)"},{"n":29,"time-ms":4.006125,"implementation":"fib-naive (recursive)"},{"n":30,"time-ms":6.508625,"implementation":"fib-naive (recursive)"}]},"mark":{"type":"line","point":true},"encoding":{"x":{"field":"n","type":"quantitative","title":"n"},"y":{"field":"time-ms","type":"quantitative","title":"Time (ms)"},"color":{"field":"implementation","type":"nominal","title":"Implementation"}}});</script></div>
+<div><script>vegaEmbed(document.currentScript.parentElement, {"$schema":"https:\/\/vega.github.io\/schema\/vega-lite\/v5.json","title":"Fibonacci Performance: Iterative vs Naive Recursive","width":600,"height":400,"data":{"values":[{"n":0,"time-ms":0.006208,"implementation":"fib (iterative)"},{"n":1,"time-ms":4.59E-4,"implementation":"fib (iterative)"},{"n":2,"time-ms":4.17E-4,"implementation":"fib (iterative)"},{"n":3,"time-ms":2.5E-4,"implementation":"fib (iterative)"},{"n":4,"time-ms":3.33E-4,"implementation":"fib (iterative)"},{"n":5,"time-ms":4.17E-4,"implementation":"fib (iterative)"},{"n":6,"time-ms":4.17E-4,"implementation":"fib (iterative)"},{"n":7,"time-ms":4.59E-4,"implementation":"fib (iterative)"},{"n":8,"time-ms":5.0E-4,"implementation":"fib (iterative)"},{"n":9,"time-ms":6.66E-4,"implementation":"fib (iterative)"},{"n":10,"time-ms":6.25E-4,"implementation":"fib (iterative)"},{"n":11,"time-ms":6.67E-4,"implementation":"fib (iterative)"},{"n":12,"time-ms":7.5E-4,"implementation":"fib (iterative)"},{"n":13,"time-ms":7.92E-4,"implementation":"fib (iterative)"},{"n":14,"time-ms":9.58E-4,"implementation":"fib (iterative)"},{"n":15,"time-ms":8.33E-4,"implementation":"fib (iterative)"},{"n":16,"time-ms":9.17E-4,"implementation":"fib (iterative)"},{"n":17,"time-ms":9.59E-4,"implementation":"fib (iterative)"},{"n":18,"time-ms":0.001,"implementation":"fib (iterative)"},{"n":19,"time-ms":0.001042,"implementation":"fib (iterative)"},{"n":20,"time-ms":0.001084,"implementation":"fib (iterative)"},{"n":21,"time-ms":0.001167,"implementation":"fib (iterative)"},{"n":22,"time-ms":0.001208,"implementation":"fib (iterative)"},{"n":23,"time-ms":0.00125,"implementation":"fib (iterative)"},{"n":24,"time-ms":0.001291,"implementation":"fib (iterative)"},{"n":25,"time-ms":0.001333,"implementation":"fib (iterative)"},{"n":26,"time-ms":0.003333,"implementation":"fib (iterative)"},{"n":27,"time-ms":0.0015,"implementation":"fib (iterative)"},{"n":28,"time-ms":0.001542,"implementation":"fib (iterative)"},{"n":29,"time-ms":0.001667,"implementation":"fib (iterative)"},{"n":30,"time-ms":0.001666,"implementation":"fib (iterative)"},{"n":0,"time-ms":5.83E-4,"implementation":"fib-naive (recursive)"},{"n":1,"time-ms":4.1E-5,"implementation":"fib-naive (recursive)"},{"n":2,"time-ms":1.67E-4,"implementation":"fib-naive (recursive)"},{"n":3,"time-ms":1.25E-4,"implementation":"fib-naive (recursive)"},{"n":4,"time-ms":1.25E-4,"implementation":"fib-naive (recursive)"},{"n":5,"time-ms":8.3E-5,"implementation":"fib-naive (recursive)"},{"n":6,"time-ms":1.66E-4,"implementation":"fib-naive (recursive)"},{"n":7,"time-ms":2.08E-4,"implementation":"fib-naive (recursive)"},{"n":8,"time-ms":2.92E-4,"implementation":"fib-naive (recursive)"},{"n":9,"time-ms":3.33E-4,"implementation":"fib-naive (recursive)"},{"n":10,"time-ms":6.67E-4,"implementation":"fib-naive (recursive)"},{"n":11,"time-ms":8.34E-4,"implementation":"fib-naive (recursive)"},{"n":12,"time-ms":0.001292,"implementation":"fib-naive (recursive)"},{"n":13,"time-ms":0.002041,"implementation":"fib-naive (recursive)"},{"n":14,"time-ms":0.003167,"implementation":"fib-naive (recursive)"},{"n":15,"time-ms":0.005041,"implementation":"fib-naive (recursive)"},{"n":16,"time-ms":0.008,"implementation":"fib-naive (recursive)"},{"n":17,"time-ms":0.012958,"implementation":"fib-naive (recursive)"},{"n":18,"time-ms":0.02075,"implementation":"fib-naive (recursive)"},{"n":19,"time-ms":0.033375,"implementation":"fib-naive (recursive)"},{"n":20,"time-ms":0.054041,"implementation":"fib-naive (recursive)"},{"n":21,"time-ms":0.087458,"implementation":"fib-naive (recursive)"},{"n":22,"time-ms":0.141417,"implementation":"fib-naive (recursive)"},{"n":23,"time-ms":0.231209,"implementation":"fib-naive (recursive)"},{"n":24,"time-ms":0.369625,"implementation":"fib-naive (recursive)"},{"n":25,"time-ms":0.616666,"implementation":"fib-naive (recursive)"},{"n":26,"time-ms":0.981625,"implementation":"fib-naive (recursive)"},{"n":27,"time-ms":1.544084,"implementation":"fib-naive (recursive)"},{"n":28,"time-ms":2.465709,"implementation":"fib-naive (recursive)"},{"n":29,"time-ms":3.984708,"implementation":"fib-naive (recursive)"},{"n":30,"time-ms":6.3715,"implementation":"fib-naive (recursive)"}]},"mark":{"type":"line","point":true},"encoding":{"x":{"field":"n","type":"quantitative","title":"n"},"y":{"field":"time-ms","type":"quantitative","title":"Time (ms)"},"color":{"field":"implementation","type":"nominal","title":"Implementation"}}});</script></div>
 ```
 
 

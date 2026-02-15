@@ -5,8 +5,7 @@
    [clojure.test.check :as tc]
    [clojure.test.check.generators :as gen]
    [clojure.test.check.properties :as prop]
-   [scicloj.kindly.v4.kind :as kind]
-   [scicloj.clay.v2.api :as clay]))
+   [scicloj.kindly.v4.kind :as kind]))
 
 ;; # Fibonacci Sequence Function
 ;; ## Functionality
@@ -30,7 +29,12 @@
 
 ;; ## Properties
 ;; ### Parity Invarient
-;; Every third Fibonacci number is odd.
+;; Every third Fibonacci number is even.
+;; This is because an odd + even = odd so we get the cycle:
+;; ```
+;; 0+1=1 -> 1+1=2 -> 1+2=3 -> ...
+;; E+O=O -> O+O=E -> O+E=O -> ...
+;; ```
 
 (def parity-invariant
   (prop/for-all
