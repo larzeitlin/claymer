@@ -1,4 +1,3 @@
-^:kindly/hide-code
 (ns user)
 
 ;; # Re-render docs from the REPL

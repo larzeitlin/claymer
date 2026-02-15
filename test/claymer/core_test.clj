@@ -1,4 +1,3 @@
-^:kindly/hide-code
 (ns claymer.core-test
   (:require
    [claymer.core :as sut]
@@ -6,7 +5,10 @@
    [clojure.test.check :as tc]
    [clojure.test.check.generators :as gen]
    [clojure.test.check.properties :as prop]
-   [scicloj.kindly.v4.kind :as kind]))
+   [scicloj.kindly.v4.kind :as kind]
+   [scicloj.clay.v2.api :as clay]))
+
+(clay/)
 
 ;; # Fibonacci Sequence Function
 ;; ## Functionality
