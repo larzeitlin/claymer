@@ -24,7 +24,7 @@
     "href": "index.html#properties",
     "title": "Claymer Documentation",
     "section": "1.2 Properties",
-    "text": "1.2 Properties\n\n1.2.1 Parity Invarient\nEvery third Fibonacci number is odd.\n\n(def parity-invariant\n  (prop/for-all\n   [v gen/pos-int]\n   (let [fib-number (sut/fib v)]\n     (if (zero? (rem v 3))\n       (even? fib-number)\n       (odd? fib-number)))))\n\n\n(tc/quick-check 10000 parity-invariant)\n\n\n{:result true,\n :pass? true,\n :num-tests 10000,\n :time-elapsed-ms 46,\n :seed 1771147802242}",
+    "text": "1.2 Properties\n\n1.2.1 Parity Invarient\nEvery third Fibonacci number is odd.\n\n(def parity-invariant\n  (prop/for-all\n   [v gen/pos-int]\n   (let [fib-number (sut/fib v)]\n     (if (zero? (rem v 3))\n       (even? fib-number)\n       (odd? fib-number)))))\n\n\n(tc/quick-check 10000 parity-invariant)\n\n\n{:result true,\n :pass? true,\n :num-tests 10000,\n :time-elapsed-ms 46,\n :seed 1771148009474}",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Fibonacci Sequence Function</span>"
     ]
@@ -37,26 +37,6 @@
     "text": "1.3 Performance Comparison\nBelow we compare the efficient iterative fib against a naive recursive fib-naive implementation across a range of input sizes. The naive version has exponential time complexity, so its execution time grows dramatically.\n\n\nsource: test/claymer/core_test.clj",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Fibonacci Sequence Function</span>"
-    ]
-  },
-  {
-    "objectID": "user.html",
-    "href": "user.html",
-    "title": "2  Re-render docs from the REPL",
-    "section": "",
-    "text": "requires Quarto CLI to be installed\n\n(comment\n  (require '[scicloj.clay.v2.api :as clay])\n  (clay/make! {:base-source-path \"\"\n               :render true\n               :book {:title \"Claymer Documentation\"}\n               :first-as-index true\n               :clean-up-target-dir true\n               :remote-repo {:git-url \"https://github.com/larzeitlin/claymer\"\n                             :branch \"main\"}\n               :format [:quarto :html]}))\n\n\nsource: dev/user.clj",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Re-render docs from the REPL</span>"
-    ]
-  },
-  {
-    "objectID": "claymer.core.html",
-    "href": "claymer.core.html",
-    "title": "3  claymer.core",
-    "section": "",
-    "text": "(ns claymer.core)\n\n\n(defn fib [n]\n  (nth (map first (iterate (fn [[a b]] [b (+' a b)]) [0 1])) n))\n\n\n(defn fib-naive [n]\n  (if (&lt;= n 1) n (+ (fib-naive (- n 1)) (fib-naive (- n 2)))))\n\n\nsource: src/claymer/core.clj",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>`claymer.core`</span>"
     ]
   }
 ]

@@ -3,5 +3,5 @@ format:
   revealjs: {theme: solarized, navigation-mode: vertical, transition: slide, background-transition: fade, incremental: true}
 project: {type: book}
 book:
-  chapters: [index.qmd, user.qmd, claymer.core.qmd]
+  chapters: [index.qmd]
   title: Claymer Documentation

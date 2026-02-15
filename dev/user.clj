@@ -6,7 +6,7 @@
 
 (comment
   (require '[scicloj.clay.v2.api :as clay])
-  (clay/make! {:base-source-path ""
+  (clay/make! {:base-source-path "test"
                :render true
                :book {:title "Claymer Documentation"}
                :first-as-index true
