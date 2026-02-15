@@ -1,3 +1,4 @@
+^:kindly/hide-code
 (ns claymer.core-test
   (:require
    [claymer.core :as sut]
