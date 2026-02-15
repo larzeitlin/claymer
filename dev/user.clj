@@ -6,4 +6,4 @@
   (clay/make! {:base-source-path "test"
                :render true
                :first-as-index true
-               :format [:quarto :fgm]}))
+               :format [:quarto :gfm]}))
