@@ -1,9 +1,12 @@
+^:kindly/hide-code
 (ns user)
+
+;; # Re-render docs from the REPL
+;; requires [Quarto CLI](https://quarto.org/docs/get-started/) to be installed
 
 (comment
   (require '[scicloj.clay.v2.api :as clay])
-  ; requires Quarto CLI to be installed: https://quarto.org/docs/get-started/
-  (clay/make! {:base-source-path "test"
+  (clay/make! {:base-source-path ""
                :render true
                :book {:title "Claymer Documentation"}
                :first-as-index true

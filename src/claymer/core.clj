@@ -1,5 +1,7 @@
 (ns claymer.core)
 
+; # `claymer.core`
+
 (defn fib [n]
   (nth (map first (iterate (fn [[a b]] [b (+' a b)]) [0 1])) n))
 
