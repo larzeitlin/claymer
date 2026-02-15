@@ -8,8 +8,6 @@
    [scicloj.kindly.v4.kind :as kind]
    [scicloj.clay.v2.api :as clay]))
 
-(clay/)
-
 ;; # Fibonacci Sequence Function
 ;; ## Functionality
 ;; - `fib`: Takes a non-negative integer `n` and returns the nth Fibonacci number.
