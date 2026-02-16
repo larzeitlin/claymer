@@ -19,11 +19,11 @@
 ;; Produces nth number in the fibonacci sequence:
 (deftest fib-test
   (testing
-      (is (= (sut/fib 0) 0)))
+   (is (= (sut/fib 0) 0)))
   (testing
-      (is (= (sut/fib 12) 144)))
+   (is (= (sut/fib 12) 144)))
   (testing
-      (is (= (sut/fib 69) 117669030460994))))
+   (is (= (sut/fib 69) 117669030460994))))
 
 ; Negitive numbers are out of bounds.
 (deftest fib-neg-n-out-of-range-test
@@ -68,9 +68,13 @@
   (let [ns-range (range 0 31)]
     (concat
      (for [n ns-range]
-       {:n n :time-ms (bench-ms sut/fib n) :implementation "fib (iterative)"})
+       {:n n
+        :time-ms (bench-ms sut/fib n)
+        :implementation "fib (iterative)"})
      (for [n ns-range]
-       {:n n :time-ms (bench-ms sut/fib-naive n) :implementation "fib-naive (recursive)"}))))
+       {:n n
+        :time-ms (bench-ms sut/fib-naive n)
+        :implementation "fib-naive (recursive)"}))))
 
 ^:kindly/hide-code
 (kind/vega-lite
@@ -80,8 +84,14 @@
   :height 400
   :data {:values bench-data}
   :mark {:type "line" :point true}
-  :encoding {:x {:field "n" :type "quantitative" :title "n"}
-             :y {:field "time-ms" :type "quantitative" :title "Time (ms)"}
-             :color {:field "implementation" :type "nominal" :title "Implementation"}}})
+  :encoding {:x     {:field "n"
+                     :type  "quantitative"
+                     :title "n"}
+             :y     {:field "time-ms"
+                     :type  "quantitative"
+                     :title "Time (ms)"}
+             :color {:field "implementation"
+                     :type  "nominal"
+                     :title "Implementation"}}})
 
 
