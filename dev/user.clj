@@ -12,7 +12,5 @@
                :book {:title "Claymer Documentation"}
                :first-as-index true
                :clean-up-target-dir true
-               :remote-repo {:git-url "https://github.com/larzeitlin/claymer"
-                             :branch "main"}
                :format [:quarto :html]
                :subdirs-to-sync ["test"]}))

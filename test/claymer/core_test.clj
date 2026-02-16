@@ -2,19 +2,20 @@
 (ns claymer.core-test
   (:require
    [claymer.core :as sut]
+   [clay.repo :as repo]
    [clojure.test :as test :refer [deftest is testing]]
    [clojure.test.check :as tc]
    [clojure.test.check.generators :as gen]
    [clojure.test.check.properties :as prop]
    [scicloj.kindly.v4.kind :as kind]))
+
 ;; # Fibonacci Sequence Function
-;; ## Functionality
-;; - `fib`: Takes a non-negative integer `n` and returns the nth Fibonacci number.
-;; ## Implementation
 ^:kindly/hide-code
-(kind/code
- (with-out-str (clojure.repl/source sut/fib)))
-;; ### Examples:
+(repo/src-link 'sut/fib)
+
+^:kindly/hide-code
+(kind/doc #'sut/fib)
+;; ## Examples:
 ;; Produces nth number in the fibonacci sequence:
 (deftest fib-test
   (testing
