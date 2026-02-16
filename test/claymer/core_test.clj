@@ -7,10 +7,13 @@
    [clojure.test.check.generators :as gen]
    [clojure.test.check.properties :as prop]
    [scicloj.kindly.v4.kind :as kind]))
-
 ;; # Fibonacci Sequence Function
 ;; ## Functionality
 ;; - `fib`: Takes a non-negative integer `n` and returns the nth Fibonacci number.
+;; ## Implementation
+^:kindly/hide-code
+(kind/code
+ (with-out-str (clojure.repl/source sut/fib)))
 ;; ### Examples:
 ;; Produces nth number in the fibonacci sequence:
 (deftest fib-test
@@ -79,4 +82,5 @@
   :encoding {:x {:field "n" :type "quantitative" :title "n"}
              :y {:field "time-ms" :type "quantitative" :title "Time (ms)"}
              :color {:field "implementation" :type "nominal" :title "Implementation"}}})
+
 
