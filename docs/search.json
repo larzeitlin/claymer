@@ -34,7 +34,7 @@
     "href": "index.html#properties",
     "title": "Claymer Documentation",
     "section": "1.3 Properties",
-    "text": "1.3 Properties\n\n1.3.1 Parity Invarient\nEvery third Fibonacci number is even. This is because an odd + even = odd so we get the cycle:\n0+1=1 -&gt; 1+1=2 -&gt; 1+2=3 -&gt; ...\nE+O=O -&gt; O+O=E -&gt; O+E=O -&gt; ...\n\n(def parity-invariant\n  (prop/for-all\n   [v gen/pos-int]\n   (let [fib-number (sut/fib v)]\n     (if (zero? (rem v 3))\n       (even? fib-number)\n       (odd? fib-number)))))\n\n\n(tc/quick-check 10000 parity-invariant)\n\n\n{:result true,\n :pass? true,\n :num-tests 10000,\n :time-elapsed-ms 36,\n :seed 1771225388720}",
+    "text": "1.3 Properties\n\n1.3.1 Parity Invarient\nEvery third Fibonacci number is even. This is because an odd + even = odd so we get the cycle:\n0+1=1 -&gt; 1+1=2 -&gt; 1+2=3 -&gt; ...\nE+O=O -&gt; O+O=E -&gt; O+E=O -&gt; ...\n\n(def parity-invariant\n  (prop/for-all\n   [v gen/pos-int]\n   (let [fib-number (sut/fib v)]\n     (if (zero? (rem v 3))\n       (even? fib-number)\n       (odd? fib-number)))))\n\n\n(tc/quick-check 10000 parity-invariant)\n\n\n{:result true,\n :pass? true,\n :num-tests 10000,\n :time-elapsed-ms 50,\n :seed 1771227759129}",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Fibonacci Sequence Function</span>"
     ]
