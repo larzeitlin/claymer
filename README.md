@@ -1,6 +1,11 @@
 # Claymer
 An example of using [Clay](https://scicloj.github.io/clay/) to create self-documenting
-tests in clojure code.
+tests in clojure code. 
+
+## Notice the simplicity
+The code still just looks like regular Clojure namespaces.
+Comments, tests, docstrings and the code itself are all turned
+into informative documenation with a minimal amount of extra annotation required.
 
 - `src` contains some example implementation code.
 - `test` contains more or less normal clojure tests with a little markup for Clay
