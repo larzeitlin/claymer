@@ -34,7 +34,7 @@
     "href": "index.html#properties",
     "title": "Claymer Documentation",
     "section": "1.3 Properties",
-    "text": "1.3 Properties\n\n1.3.1 Parity Invarient\nEvery third Fibonacci number is even. This is because an odd + even = odd so we get the cycle:\n0+1=1 -&gt; 1+1=2 -&gt; 1+2=3 -&gt; ...\nE+O=O -&gt; O+O=E -&gt; O+E=O -&gt; ...\n\n(def parity-invariant\n  (prop/for-all\n   [v gen/pos-int]\n   (let [fib-number (sut/fib v)]\n     (if (zero? (rem v 3))\n       (even? fib-number)\n       (odd? fib-number)))))\n\n\n(tc/quick-check 10000 parity-invariant)\n\n\n{:result true,\n :pass? true,\n :num-tests 10000,\n :time-elapsed-ms 50,\n :seed 1771227759129}",
+    "text": "1.3 Properties\n\n1.3.1 Parity Invarient\nEvery third Fibonacci number is even. This is because an odd + even = odd so we get the cycle:\n0+1=1 -&gt; 1+1=2 -&gt; 1+2=3 -&gt; ...\nE+O=O -&gt; O+O=E -&gt; O+E=O -&gt; ...\n\n(def parity-invariant\n  (prop/for-all\n   [v gen/pos-int]\n   (let [fib-number (sut/fib v)]\n     (if (zero? (rem v 3))\n       (even? fib-number)\n       (odd? fib-number)))))\n\n\n(tc/quick-check 10000 parity-invariant)\n\n\n{:result true,\n :pass? true,\n :num-tests 10000,\n :time-elapsed-ms 39,\n :seed 1771228910548}",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Fibonacci Sequence Function</span>"
     ]
@@ -47,6 +47,16 @@
     "text": "1.4 Performance Comparison\nBelow we compare the efficient iterative fib against a naive recursive fib-naive implementation across a range of input sizes. The naive version has exponential time complexity, so its execution time grows dramatically.\n\n\nsource: test/claymer/core_test.clj",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Fibonacci Sequence Function</span>"
+    ]
+  },
+  {
+    "objectID": "test/claymer/core_test_additional.html",
+    "href": "test/claymer/core_test_additional.html",
+    "title": "2  More context on the Fibonacci Sequence",
+    "section": "",
+    "text": "The Fibonacci sequence is a series of numbers where each number is the sum of the two preceding ones, starting with 0 and 1. The sequence begins as: 0, 1, 1, 2, 3, 5, 8, 13, and so on. Mathematically, it is defined as:\n[ F(n) = F(n-1) + F(n-2), F(0) = 0 F(1) = 1. ]\nThe Fibonacci sequence appears frequently in nature, art, and architecture.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>More context on the Fibonacci Sequence</span>"
     ]
   }
 ]
