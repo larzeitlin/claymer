@@ -1,0 +1,4 @@
+{:paths ["src" "test"]
+ :deps {claymer {:local/root ".."}
+        org.scicloj/clay {:mvn/version "2.0.10"}
+        org.clojure/test.check {:mvn/version "1.1.1"}}}

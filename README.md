@@ -1,5 +1,5 @@
 # Claymer
-An example of using [Clay](https://scicloj.github.io/clay/) to create self-documenting
+A small library to support DDT (documentation-driven tests) [Clay](https://scicloj.github.io/clay/) to create self-documenting
 tests in clojure code. 
 
 ## Notice the simplicity
